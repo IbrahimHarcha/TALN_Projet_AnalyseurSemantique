@@ -1,0 +1,458 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<html>
+ <head>
+    <title>Le Rézo sous forme DUMP</title>
+    
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+
+<link rel="stylesheet" type="text/css" href="CSS/jdm.css"/>
+<link rel="stylesheet" type="text/css" href="CSS/smoothbox.css"/>
+<link rel="stylesheet" type="text/css" href="CSS/Roar.css"/>
+<link rel="stylesheet" type="text/css" href="jsscripts/humanejs/themes/libnotifybottom.css"/>
+<meta name="robots" content="nofollow, notranslate" />
+<meta name="googlebot" content="nofollow, notranslate" />
+
+<meta name="description" content="Jeu d'associations de termes, trés sympa et amusant. Mots à collectionner, capturer. Trouver les associations les plus pertinentes."/>
+<meta name="keywords" lang="fr" content="jeu, mots, mot, expression, collection, associations, fonctions lexicales, jeuxdemots, amusant, fonction lexicale, réseau, réseau lexical, TAL, TALN, langue, langage, lexique, dictionnaire"/>
+<META HTTP-EQUIV="Content-Language" content="fr"/>
+<meta name="reply-to" content="jeuxdemeaux@gmail.com"/>
+<meta name="category" content="Jeux"/>
+<meta name="distribution" content="global"/>
+<meta name="revisit-after" content="7 days"/><meta name="author" lang="fr" content="LIRMM, Mathieu Lafourcade"/>
+<meta name="copyright" content="LIRMM, Mathieu Lafourcade"/>
+<meta name="generator" content=""/>
+<meta name="identifier-url" content="https://www.jeuxdemots.org"/>
+<meta name="expires" content="never"/>
+<meta name="Date-Creation-yyyymmdd" content="mai 2006"/>
+<meta name="Date-Revision-yyyymmdd" content="septembre 2010"/>
+<meta name="google-site-verification" content="FJvgiMAOHMfdRtqEbU1H23AG_fLYRdz7fIioDc_oOxE" /><meta property="og:image" content="logo-jdm/logo1.jpg"/>
+<meta property="og:image" content="logo-jdm/Logo_JDMrect_fond noir.png"/>
+<meta property="og:image" content="logo-jdm/Logo_JDMrect_fond_blanc.png"/>
+<meta property="og:image" content="logo-jdm/Logo_JDMrect_fond_transp.png"/>
+<meta property="og:image" content="pics/logoJDMcarrevarianteFondNoir.png"/>
+<meta 
+	property="og:image" content="pics/logoJDMcarreFondBlanc.png"/>
+<meta property="og:image" content="pics/favicon-Je-32-bis.ico"/>
+
+<style>
+    @font-face {
+		font-family: "fontcandid";
+		src: url("fonts/TEMPSITC.TTF");
+	}
+</style>
+	
+<noscript>
+
+	<div style="position:absolute;z-index:10000;font-size:32pt;">
+
+	<CENTER>Javascript doit fonctionner ! Activez-le et rechargez cette page.
+
+	<br>
+
+	<IMG src="pics/error.png">
+
+	</CENTER>
+
+	<div>
+
+	<meta HTTP-EQUIV="Refresh" content="1;URL=http://jeuxdemots.org/"> 
+
+</noscript>
+
+
+<script type="text/javascript" src="jsscripts/mootools.js"></script>
+<script type="text/javascript" src="jsscripts/mootoolsmore.js"></script>
+<script type="text/javascript" src="jsscripts/jdm_twik_script.js"></script>
+<script type="text/javascript" src="jsscripts/jdm_duel_script.js"></script>
+<script type="text/javascript" src="jsscripts/jdm_shake_script.js"></script>
+<script type="text/javascript" src="jsscripts/jdm_beat_script.js"></script>
+<script type="text/javascript" src="jsscripts/jdm_nbrel_script.js"></script>
+<script type="text/javascript" src="jsscripts/jdm_playerstats_script.js"></script>
+<script type="text/javascript" src="jsscripts/shortcuts.js"></script>
+<script type="text/javascript" src="jsscripts/smoothbox.js"></script>
+<script type="text/javascript" src="jsscripts/overlay.js"></script>
+<script type="text/javascript" src="jsscripts/shake.js"></script>
+<script type="text/javascript" src="jsscripts/Roar.js"></script>
+<script type="text/javascript" src="jsscripts/humanejs/humane.js"></script>
+<link rel="shortcut icon" href="pics/favicon-Je-32-bis.ico" type="image/x-icon" />
+
+   	<link href='https://fonts.googleapis.com/css?family=Schoolbell' rel='stylesheet' type='text/css'>
+   	  </head>
+<body STYLE="overflow:auto;
+overflow-x:auto;
+overflow-y:visible;overflow-x:hidden;
+padding: 0px; margin: 0px; border: 0px;">
+
+<div class="jdm-level1-block">
+
+	<div class="jdm-prompt-block">
+    <div class="jdm-prompt">
+    Le Rézo format DUMP    </div>
+	</div>
+
+</div>
+
+<div class="jdm-level2-block">
+    <div id="rezoform" style="position:relative;top:-43px;left:100px;">
+    
+
+    Lien de cette page: <URL>?gotermsubmit=Chercher&gotermrel=boit&rel=</URL>
+    <br>
+    <br>
+
+     <form id="gotermrel" name="gotermrel" method="get" action="rezo-dump.php" >
+	    <input id="gotermsubmit" type="submit" name="gotermsubmit" value="Chercher">
+	    le terme
+	    <input id="gotermrel" type="text" name="gotermrel" value="boit" size=100>
+	    <br><fieldset>
+  <legend> Options </legend>
+	Numéro de relation
+	<input id="rel" type="text" name="rel" value="" size=10>
+  <div>
+    <input type="checkbox" id="relout" name="relout" value="norelout" >
+    <label for="relout">Pas de relations sortantes</label>
+  </div>
+  <div>
+    <input type="checkbox" id="relin" name="relin" value="norelin" >
+    <label for="relin">Pas de relations entrantes</label>
+  </div>
+</fieldset></form>
+<br>
+<br>FROM CACHE [401250.txt] : size=11722 - date=December 17 2024 14:16:06. - 1711696 secondes ago - 19.811296296296 days ago <br>
+
+<br>
+
+Code DUMP (cf source)<br>
+
+
+<CODE>
+// DUMP pour le terme 'boit' (eid=401250)
+// NE PAS TENIR COMPTE DE L'ORDRE DES RELATIONS DANS CE DUMP
+
+<def>
+
+</def>
+
+
+
+// les types de noeuds (Nodes Types) : nt;ntid;'ntname'
+
+nt;1;'n_term'
+nt;2;'n_form'
+nt;4;'n_pos'
+nt;18;'n_data'
+nt;36;'n_data_pot'
+nt;777;'n_wikipedia'
+
+// les noeuds/termes (Entries) : e;eid;'name';type;w;'formated name' 
+
+e;401250;'boit';1;50
+e;2946892;'Ver:Conjug';4;0
+e;241794;'_POL-NEUTRE';36;50
+e;212235;'Ver:';4;50
+e;223172;'_POL-NEG';36;50
+e;47918;'boire';1;4672
+e;15371284;'Il boit peu.';1;0
+e;231490;'Elle boit pas, elle fume pas, elle drague pas, mais? elle cause !';1;50
+e;17772;'Roi boit';1;50
+e;16040872;'boit-tout';1;0
+e;15407333;'boit un verre';1;0
+e;2605513;'qui a fait la faute, la boit';1;0
+e;150118;'Ver:IPre+SG+P3';4;50
+e;15419966;'Ça se boit comme du petit-lait !';1;0
+e;15566995;'personne qui boit beaucoup';1;0
+e;15407331;'Il boit beaucoup.';1;0
+e;2604274;'qui bon l'achète, bon le boit';1;0
+e;15583961;'Il ne boit que de l'eau.';1;0
+e;181498;'cheval qui boit dans son blanc';1;50
+e;254877;'_POL-NEUTRE_PC';36;50
+e;109462;'boit-sans-soif';1;82
+e;15664587;'Il ne boit jamais d'alcool.';1;0
+e;15407336;'une personne qui boit beaucoup';1;0
+e;15334791;'ça se boit comme du petit-lait';1;0
+e;15354496;'Il ne boit pas beaucoup.';1;0
+e;6595058;'On se calme et on boit frais à Saint-Tropez';777;0
+e;186417;'le roi boit, la reine boit';1;50
+e;339460;'boit sans soif';1;50
+e;10438828;'La Femme qui boit';777;0
+e;2427939;'un cheval boit la bride';1;0
+e;2935005;'VerbalTime:Present';4;0
+e;15287755;'Un malt se boit sec.';1;0
+e;15265458;'Sophie boit son café brûlant.';1;0
+e;15206071;'Son mari boit.';1;0
+e;223173;'_POL-POS';36;50
+e;37165461;'fête où l'on boit beaucoup';1;0
+e;158767322;'chat qui boit';1;0
+e;425668;'Boit';1;50
+e;14270945;'VerbalNumber:SG';4;0
+e;254878;'_POL-NEG_PC';36;50
+e;35212658;'personne qui boit trop';1;0
+e;273221;'_INFO-WIKI-NO';36;50
+e;3093590;'VerbalMode:Indicatif';4;0
+e;14270944;'VerbalPers:P3';4;0
+e;3575927;'Morpho:min';18;50
+e;38303837;'on boit d'un trait';1;0
+e;3576104;'Morpho:nospace';18;50
+e;311031148;'Elle boit pas, elle fume pas, elle drague pas, mais? elle cause !';1;0
+e;258837112;'chaton qui boit du lait';1;0
+e;243174957;'chat qui boit du lait';1;0
+e;15664588;'en:He never drinks alcohol.';1;0
+e;15407332;'en:He drinks a lot.';1;0
+e;15407334;'en:has a jar';1;0
+e;14944627;'en:drunkard';1;0
+e;2094076;'siffleuse';2;0
+e;15274048;'un grand buveur';1;0
+e;356487;'grand buveur';1;50
+e;15274049;'en:a heavy drinker';1;0
+e;7049729;'en:heavy drinker';1;0
+e;15354498;'en:He doesn't drink much.';1;0
+e;15580404;'en:it/that goes down a treat';1;0
+e;15580405;'en:it/that slips down easily';1;0
+e;15265459;'en:Sophie drinks her coffee boiling hot.';1;0
+e;15583962;'en:He only drinks water.';1;0
+e;2396289;'bois-sans-soif';1;0
+e;254876;'_POL-POS_PC';36;50
+e;317329;'_POLIT_7NOPOL';36;50
+e;106797;'bière';1;2470
+e;253;'soda';1;644
+e;86296;'lait';1;3816
+e;53310;'jus';1;1422
+e;66324;'café';1;4059
+e;143378;'thé';1;2486
+e;65012;'eau';1;11642
+e;47597;'alcool';1;4580
+e;144497;'verre';1;3950
+e;317326;'_POLIT_5UMP';36;50
+e;317324;'_POLIT_3PS';36;50
+e;317322;'_POLIT_1ECO';36;50
+e;171035875;'Pochard';1;0
+e;340676;'buveur excessif';1;50
+e;15407335;'en:He drinks heavily.';1;0
+e;15354497;'en:He doesn't drink a lot.';1;0
+e;15206072;'en:Her husband drinks.';1;0
+e;15287757;'en:A pure malt should be drunk straight.';1;0
+e;99528;'pochard';1;82
+e;132477;'soûlot';1;50
+e;191187;'Inch'Allah';1;52
+e;44925;'pochetron';1;78
+e;50632830;'en:big drinker';1;0
+e;4386;'poivrot';1;126
+e;250126;'pochetronne';1;76
+e;2550181;'pochtron';1;2
+e;2100991;'soûlarde';2;0
+e;65456;'soûlard';1;50
+e;15428007;'grosse buveuse';1;0
+e;356855;'gros buveur';1;74
+e;2101264;'soûlote';2;0
+e;257362;'pocharde';1;76
+e;2101027;'soûlaude';2;0
+e;14594722;'langue du cheval';777;0
+e;17026154;'Vidéo externe';777;0
+e;2248110;'poivrote';2;0
+e;22576;'catapulte';1;92
+
+// les types de relations (Relation Types) : rt;rtid;'trname';'trgpname';'rthelp' 
+
+rt;0;'r_associated';'idÃ©e associÃ©e';Il est demandÃ© d'Ã©numÃ©rer les termes les plus Ã©troitement associÃ©s au mot cible... Ce mot vous fait penser Ã  quoi ?
+rt;4;'r_pos';'POS';Partie du discours (Nom, Verbe, Adjectif, Adverbe, etc.)
+rt;11;'r_locution';'locution';A partir d'un terme, il est demandÃ© d'Ã©numÃ©rer les locutions, expression ou mots composÃ©s en rapport avec ce terme. Par exemple, pour 'moulin', ou pourra avoir 'moulin Ã  vent', 'moulin Ã  eau', 'moulin Ã  cafÃ©'. Pour 'vendre', on pourra avoir 'vendre la peau de l'ours avant de l'avoir tuÃ©', 'vendre Ã  perte', etc..
+rt;18;'r_data';'r_data';Informations diverses (plutÃ´t d'ordre lexicales)
+rt;19;'r_lemma';'r_lemma';Le lemme (par exemple 'mangent a pour lemme  'manger' ; 'avions' a pour lemme 'avion' ou 'avoir').
+rt;36;'r_infopot';'information potentielle';Information sÃ©mantique potentielle
+rt;71;'r_variante';'variante';Variantes du termes cible. Par exemple, yaourt, yahourt, ou encore Ã©vÃ¨nement, Ã©vÃ©nement.
+rt;666;'r_aki';'r_aki';(TOTAKI) equivalent pour TOTAKI de l'association libre
+rt;777;'r_wiki';'r_wiki';Associations issues de wikipedia...
+
+// les relations sortantes : r;rid;node1;node2;type;w;w_normed;rank 
+// 101 relations sortantes 
+
+r;72423629;401250;2946892;4;196;1;1
+r;25772615;401250;241794;36;122;1;1
+r;14346741;401250;212235;4;86;0.439;2
+r;26320462;401250;223172;36;70;0.574;2
+r;14346739;401250;47918;19;62;1;1
+r;402105038;401250;15371284;11;60;1;1
+r;14272131;401250;231490;11;60;1;1
+r;14327041;401250;17772;11;59;0.983;2
+r;419657512;401250;16040872;11;58;0.967;3
+r;419657508;401250;15407333;11;58;0.967;3
+r;55487864;401250;2605513;11;58;0.967;3
+r;14346740;401250;150118;4;58;0.296;3
+r;473284611;401250;15419966;11;56;0.933;4
+r;472821980;401250;15566995;11;56;0.933;4
+r;402105034;401250;15407331;11;56;0.933;4
+r;55465547;401250;2604274;11;56;0.933;4
+r;402108440;401250;15583961;11;55;0.917;5
+r;14288131;401250;181498;11;55;0.917;5
+r;27054878;401250;254877;36;54;0.443;3
+r;14336899;401250;109462;11;54;0.9;6
+r;413897148;401250;15664587;11;53;0.883;7
+r;473252229;401250;15407336;11;52;0.867;8
+r;473298374;401250;15334791;11;51;0.85;9
+r;402108436;401250;15354496;11;51;0.85;9
+r;122104603;401250;6595058;11;51;0.85;9
+r;14286563;401250;186417;11;51;0.85;9
+r;14214904;401250;339460;11;51;0.85;9
+r;256283976;401250;10438828;11;48;0.8;10
+r;54657744;401250;2427939;11;47;0.783;11
+r;72094222;401250;2935005;4;45;0.23;4
+r;419557712;401250;15287755;11;38;0.633;12
+r;419547613;401250;15265458;11;38;0.633;12
+r;419547030;401250;15206071;11;38;0.633;12
+r;26320463;401250;223173;36;36;0.295;4
+r;494846606;401250;37165461;11;35;0.583;13
+r;554394717;401250;158767322;11;34;0.567;14
+r;526994607;401250;425668;71;31;1;1
+r;362921810;401250;14270945;4;31;0.158;5
+r;27054879;401250;254878;36;31;0.254;5
+r;797407434;401250;186417;0;30;1;1
+r;494284580;401250;35212658;11;30;0.5;15
+r;86868659;401250;273221;36;30;0.246;6
+r;361911344;401250;3093590;4;29;0.148;6
+r;797400640;401250;231490;0;28;0.933;2
+r;362922089;401250;14270944;4;28;0.143;7
+r;89791144;401250;3575927;18;28;1;1
+r;494971324;401250;38303837;11;26;0.433;16
+r;90769214;401250;3576104;18;26;0.929;2
+r;87493355;401250;47918;0;26;0.867;3
+r;941305393;401250;311031148;11;25;0.417;17
+r;797426226;401250;17772;0;25;0.833;4
+r;658110481;401250;258837112;11;25;0.417;17
+r;636142827;401250;243174957;11;25;0.417;17
+r;797374611;401250;339460;0;23;0.767;5
+r;797430811;401250;109462;0;21;0.7;6
+r;797408170;401250;181498;0;21;0.7;6
+r;14445633;401250;425668;0;21;0.7;6
+r;936840342;401250;15664588;0;20;0.667;7
+r;935780978;401250;15407332;0;20;0.667;7
+r;935780976;401250;15407334;0;20;0.667;7
+r;924452962;401250;14944627;0;20;0.667;7
+r;921661568;401250;2094076;0;20;0.667;7
+r;921264415;401250;15274048;0;20;0.667;7
+r;921264400;401250;356487;0;20;0.667;7
+r;920644867;401250;15274049;0;20;0.667;7
+r;920644861;401250;7049729;0;20;0.667;7
+r;919098587;401250;15354498;0;20;0.667;7
+r;906365143;401250;15580404;0;20;0.667;7
+r;906365138;401250;15580405;0;20;0.667;7
+r;905560614;401250;15334791;0;20;0.667;7
+r;905548284;401250;15419966;0;20;0.667;7
+r;905521530;401250;15407336;0;20;0.667;7
+r;905283922;401250;15566995;0;20;0.667;7
+r;903635344;401250;15265459;0;20;0.667;7
+r;900088003;401250;15583962;0;20;0.667;7
+r;899639536;401250;16040872;0;20;0.667;7
+r;899639534;401250;15407333;0;20;0.667;7
+r;899598221;401250;15265458;0;20;0.667;7
+r;899116693;401250;15664587;0;20;0.667;7
+r;895375722;401250;15583961;0;20;0.667;7
+r;895375720;401250;15354496;0;20;0.667;7
+r;895373607;401250;15371284;0;20;0.667;7
+r;895373605;401250;15407331;0;20;0.667;7
+r;799535458;401250;6595058;0;20;0.667;7
+r;797797788;401250;2396289;0;20;0.667;7
+r;797762233;401250;2605513;0;20;0.667;7
+r;797760146;401250;2604274;0;20;0.667;7
+r;27054877;401250;254876;36;16;0.131;7
+r;505254034;401250;317329;36;2;0.016;8
+r;735362666;401250;106797;666;2;1;1
+r;735362663;401250;253;666;2;1;1
+r;735362660;401250;86296;666;2;1;1
+r;735362657;401250;53310;666;2;1;1
+r;735362654;401250;66324;666;2;1;1
+r;735362651;401250;143378;666;2;1;1
+r;735362648;401250;65012;666;2;1;1
+r;735362645;401250;47597;666;2;1;1
+r;735362643;401250;144497;666;2;1;1
+r;505254037;401250;317326;36;2;0.016;8
+r;505254036;401250;317324;36;2;0.016;8
+r;505254035;401250;317322;36;2;0.016;8
+
+// les relations entrantes : r;rid;node1;node2;type;w 
+// 76 relations entrantes 
+
+r;730716415;14944627;401250;0;976
+r;645234751;2094076;401250;0;954
+r;615658730;7049729;401250;0;952
+r;61030393;2396289;401250;0;62
+r;413897149;15664587;401250;0;60
+r;55465548;2604274;401250;0;60
+r;55487865;2605513;401250;0;60
+r;472821981;15566995;401250;0;59
+r;14336900;109462;401250;0;58
+r;428723128;15583962;401250;0;58
+r;482128844;15580404;401250;0;57
+r;419657513;16040872;401250;0;57
+r;402105035;15407331;401250;0;57
+r;14272132;231490;401250;0;57
+r;482128842;15580405;401250;0;56
+r;402108441;15583961;401250;0;56
+r;14214905;339460;401250;0;55
+r;419657509;15407333;401250;0;55
+r;473284612;15419966;401250;0;54
+r;402105039;15371284;401250;0;54
+r;402108437;15354496;401250;0;54
+r;122104604;6595058;401250;0;54
+r;14286564;186417;401250;0;53
+r;575403639;15354498;401250;0;47
+r;473252230;15407336;401250;0;47
+r;419547614;15265458;401250;0;44
+r;615658810;15274049;401250;0;44
+r;14288132;181498;401250;0;44
+r;473298375;15334791;401250;0;42
+r;638009853;15274048;401250;0;40
+r;447859795;15265459;401250;0;40
+r;638009843;356487;401250;0;40
+r;14327042;17772;401250;0;39
+r;526994608;425668;401250;71;31
+r;615658818;15407334;401250;0;30
+r;615658821;15407332;401250;0;29
+r;14445632;425668;401250;0;29
+r;637947458;15664588;401250;0;28
+r;959659325;171035875;401250;0;25
+r;256283977;10438828;401250;0;24
+r;630322015;340676;401250;0;23
+r;615658814;15407335;401250;0;22
+r;615658827;15354497;401250;0;22
+r;798300534;47918;401250;0;20
+r;419557713;15287755;401250;0;19
+r;419547031;15206071;401250;0;19
+r;646905774;15206072;401250;0;15
+r;615658830;15287757;401250;0;15
+r;54657745;2427939;401250;0;13
+r;807625254;99528;401250;0;11
+r;734915587;132477;401250;0;10
+r;19690718;191187;401250;777;10
+r;746227105;44925;401250;0;10
+r;749188750;50632830;401250;0;10
+r;790936965;4386;401250;0;10
+r;808412143;250126;401250;0;10
+r;808414758;2550181;401250;0;10
+r;854893213;2100991;401250;0;10
+r;854893514;65456;401250;0;10
+r;896247636;15428007;401250;0;10
+r;896248686;356855;401250;0;10
+r;734915282;2101264;401250;0;10
+r;732028667;257362;401250;0;10
+r;731503908;2101027;401250;0;10
+r;476617169;14594722;401250;777;10
+r;476617170;17026154;401250;777;10
+r;749189137;2248110;401250;0;5
+r;501236744;22576;401250;0;2
+r;658110482;258837112;401250;0;1
+r;636142828;243174957;401250;0;1
+r;494284581;35212658;401250;0;1
+r;494846607;37165461;401250;0;1
+r;494971325;38303837;401250;0;1
+r;501236743;22576;401250;666;1
+r;554394718;158767322;401250;0;1
+r;941305395;311031148;401250;0;1
+
+// END
+</CODE>
+
+
+</div>
+</div>
+</body>
+</html>
