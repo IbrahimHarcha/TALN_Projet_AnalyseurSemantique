@@ -92,6 +92,11 @@ class GlobalAnalyzer:
         raw_toks = [tk for group in all_matches for tk in group if tk]
         cleaned = [self.clean_regex.sub("", t).lower() for t in raw_toks]
         return [c for c in cleaned if c]
+    
+        # On découpe la phrase en mots
+        # On retire les caractères spéciaux
+        # On retourne la liste des mots
+
 
     def _do_pos_tagging(self, words: List[str]):
         for w in words:
@@ -99,6 +104,9 @@ class GlobalAnalyzer:
             for poslbl, weight in pos_info.items():
                 self.g.add_node(poslbl)
                 self.g.add_edge(w, poslbl, label=f"r_pos:{weight}")
+        # On récupère les étiquettes POS pour chaque mot
+        # On ajoute un noeud pour chaque étiquette
+        # On ajoute une relation r_pos entre le mot et son étiquette
 
     def _detect_compounds(self, full_str: str):
         # On récupère les composés depuis MultiWordDetector
@@ -132,9 +140,14 @@ class GlobalAnalyzer:
                 except ValueError:
                     break
 
+
     def _resolve_ambiguity(self):
         for tk in self.token_list:
             sense, w = self.sense_storage.find_best_sense(tk)
             if sense:
                 self.g.add_node(sense)
                 self.g.add_edge(tk, sense, label="r_disambiguate")
+
+        # On récupère le sens le plus probable pour chaque mot
+        # On ajoute un noeud pour chaque sens
+

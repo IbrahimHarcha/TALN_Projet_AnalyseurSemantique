@@ -12,7 +12,7 @@ from base_store import StorableResource
 
 class LexicalSenseStorage(StorableResource):
     """
-    Gère la désambiguïsation lexicale (anciennement 'AmbiguityResolver').
+    Gère la désambiguïsation lexicale
     On récupère un ZIP (ex: JeuxDeMots) pour avoir des associations de sens.
     """
 
