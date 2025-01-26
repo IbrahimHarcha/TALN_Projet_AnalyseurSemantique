@@ -1,5 +1,3 @@
-# semantic_pipeline.py
-
 import networkx as nx
 import re
 import matplotlib.pyplot as plt
@@ -10,13 +8,10 @@ from disambiguator_storage import LexicalSenseStorage
 from jdm_fetcher import JDMFetcher
 from anaphora_connector import SimpleAnaphoraLinker
 from pos_retrieve import POSTagger
+from semantic_rules import RuleEngine
 
 
 class GlobalAnalyzer:
-    """
-    Gère l'enchaînement principal de l'analyse sémantique.
-    """
-
     def __init__(self):
         self.g = nx.Graph()
         self.token_list: List[str] = []
@@ -27,33 +22,40 @@ class GlobalAnalyzer:
         self.jdm_data = JDMFetcher()
         self.pos_tagger = POSTagger()
         self.anaphora_module = SimpleAnaphoraLinker(self.g)
+        self.rules_engine = RuleEngine(self.g)
 
     def generate_image(self, out_file: str = "semantic_output.png", graph_title: str = "Semantic Graph"):
-        """
-        Sauvegarde le graphe en PNG (sans l'afficher).
-        """
-        layout_pos = nx.spring_layout(self.g)
-        edges_labels = nx.get_edge_attributes(self.g, "label")
+        layout_pos = nx.spring_layout(self.g, k=2, iterations=50)
+        edges_labels = {}
 
-        plt.figure(figsize=(9, 7))
+        # Récupérer correctement les labels des arêtes
+        for (u, v, d) in self.g.edges(data=True):
+            if isinstance(d, dict) and 'label' in d:
+                edges_labels[(u, v)] = d['label']
+            elif isinstance(d, str):
+                edges_labels[(u, v)] = d
+
+        plt.figure(figsize=(20, 20))
         nx.draw(
             self.g,
             layout_pos,
             with_labels=True,
-            node_size=1400,
+            node_size=3000,
             node_color="lightgreen",
-            font_size=12,
+            font_size=8,
             font_weight="bold",
         )
-        nx.draw_networkx_edge_labels(self.g, layout_pos, edge_labels=edges_labels)
+        nx.draw_networkx_edge_labels(
+            self.g,
+            layout_pos,
+            edge_labels=edges_labels,
+            font_size=6
+        )
         plt.title(graph_title)
-        plt.savefig(out_file)
+        plt.savefig(out_file, dpi=300, bbox_inches='tight')
         plt.close()
 
     def __call__(self, phrase: str):
-        """
-        Lance l'analyse sur la phrase.
-        """
         self._analyze_text(phrase)
 
     def _analyze_text(self, phrase: str):
@@ -71,7 +73,7 @@ class GlobalAnalyzer:
         for i in range(len(self.token_list) - 1):
             self.g.add_edge(self.token_list[i], self.token_list[i + 1], label="r_succ")
 
-        # 3. On fetch JDM pour chaque token (sauf START/END)
+        # 3. On fetch JDM pour chaque token
         real_words = self.token_list[1:-1]
         self.jdm_data.fetch_entries_for_words(real_words)
 
@@ -87,44 +89,49 @@ class GlobalAnalyzer:
         # 7. Résolution anaphorique
         self.anaphora_module.link_pronouns()
 
+        # 8. Application des règles sémantiques
+        print("DEBUG: Starting semantic rules application")
+        # Dans _analyze_text
+        self.rules_engine.apply_rules()
+        print("DEBUG: Finished semantic rules application")
+
     def _custom_tokenize(self, sentence: str) -> List[str]:
         all_matches = self.apostrophe_regex.findall(sentence)
         raw_toks = [tk for group in all_matches for tk in group if tk]
         cleaned = [self.clean_regex.sub("", t).lower() for t in raw_toks]
         return [c for c in cleaned if c]
-    
-        # On découpe la phrase en mots
-        # On retire les caractères spéciaux
-        # On retourne la liste des mots
-
 
     def _do_pos_tagging(self, words: List[str]):
         for w in words:
             pos_info = self.pos_tagger.get_pos_tags(w)
-            for poslbl, weight in pos_info.items():
-                self.g.add_node(poslbl)
-                self.g.add_edge(w, poslbl, label=f"r_pos:{weight}")
-        # On récupère les étiquettes POS pour chaque mot
-        # On ajoute un noeud pour chaque étiquette
-        # On ajoute une relation r_pos entre le mot et son étiquette
+            for pos_type, weight in pos_info.items():
+                if pos_type == "Nom":
+                    pos_node = "Nom:"
+                elif pos_type == "Ver":
+                    pos_node = "Ver:"
+                elif pos_type == "Adj":
+                    pos_node = "Adj:"
+                elif pos_type == "Det":
+                    pos_node = "Det:"
+                else:
+                    pos_node = f"{pos_type}:"
+
+                self.g.add_node(pos_node)
+                self.g.add_edge(w, pos_node, label="r_pos:", weight=weight)
 
     def _detect_compounds(self, full_str: str):
-        # On récupère les composés depuis MultiWordDetector
         for multi_expr in self.multiw_store.known_composites:
             if multi_expr not in full_str:
                 continue
-            # On tokenize l'expression
             splitted = self._custom_tokenize(multi_expr)
-            # On cherche la séquence
             idx = 0
             while idx < len(self.token_list):
                 try:
                     start_i = self.token_list.index(splitted[0], idx)
                     if all(
-                        self.token_list[start_i + off] == splitted[off]
-                        for off in range(len(splitted))
+                            self.token_list[start_i + off] == splitted[off]
+                            for off in range(len(splitted))
                     ):
-                        # On ajoute un noeud pour la compo
                         self.token_list.append(multi_expr)
                         self.g.add_node(multi_expr)
                         final_pos = start_i + len(splitted) - 1
@@ -140,14 +147,9 @@ class GlobalAnalyzer:
                 except ValueError:
                     break
 
-
     def _resolve_ambiguity(self):
         for tk in self.token_list:
             sense, w = self.sense_storage.find_best_sense(tk)
             if sense:
                 self.g.add_node(sense)
                 self.g.add_edge(tk, sense, label="r_disambiguate")
-
-        # On récupère le sens le plus probable pour chaque mot
-        # On ajoute un noeud pour chaque sens
-
