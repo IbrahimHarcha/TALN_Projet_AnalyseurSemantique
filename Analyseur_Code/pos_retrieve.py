@@ -11,7 +11,6 @@ POS_CLASS = 4
 
 class POSTagger(StorableResource):
     """
-    Anciennement 'TaggerStore'.
     Récupère pour un mot ses étiquettes de type POS depuis l'API JDM (type=4).
     """
 

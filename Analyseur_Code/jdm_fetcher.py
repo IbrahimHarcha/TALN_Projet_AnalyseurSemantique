@@ -9,7 +9,6 @@ from base_store import StorableResource
 
 class JDMFetcher(StorableResource):
     """
-    Anciennement 'JDMDataStore'.
     Stocke localement les retours du rezo-dump (JeuxDeMots).
     """
 

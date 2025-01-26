@@ -13,7 +13,6 @@ T = TypeVar("T")
 class StorableResource(ABC):
     """
     Classe de base pour gérer des ressources mise en cache (cache local).
-    Anciennement 'BaseCache', mais renommée pour la discrétion.
     """
 
     def __init__(self, cache_filename: str, *, validity: Optional[timedelta] = None):

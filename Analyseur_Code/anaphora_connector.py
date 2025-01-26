@@ -5,7 +5,6 @@ import networkx as nx
 
 class SimpleAnaphoraLinker:
     """
-    Anciennement 'PronounLinker'.
     Traite la résolution anaphorique de base (pronoms -> antécédents).
     """
 

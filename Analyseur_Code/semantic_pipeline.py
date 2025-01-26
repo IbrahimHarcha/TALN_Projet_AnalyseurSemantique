@@ -14,7 +14,6 @@ from pos_retrieve import POSTagger
 
 class GlobalAnalyzer:
     """
-    Anciennement 'SemExtractor'.
     Gère l'enchaînement principal de l'analyse sémantique.
     """
 
